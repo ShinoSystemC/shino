@@ -1,0 +1,1022 @@
+
+*** Running vivado
+    with args -log system_wrapper.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source system_wrapper.tcl
+
+
+
+****** Vivado v2023.1 (64-bit)
+  **** SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+  **** IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+  **** SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source system_wrapper.tcl -notrace
+create_project: Time (s): cpu = 00:00:01 ; elapsed = 00:00:07 . Memory (MB): peak = 1380.730 ; gain = 159.840
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'e:/vivao_workspace/SystemC/pl_reg_acc_conv'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2023.1/data/ip'.
+add_files: Time (s): cpu = 00:00:01 ; elapsed = 00:00:06 . Memory (MB): peak = 1508.094 ; gain = 85.664
+Command: synth_design -top system_wrapper -part xczu19eg_SE-ffvc1760-2-i
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xczu19eg_SE'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu19eg_SE'
+INFO: [Device 21-403] Loading part xczu19eg_SE-ffvc1760-2-i
+WARNING: [Device 21-425] Part: xczu19eg_se is not listed in special parts list.
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 120896
+WARNING: [Synth 8-10714] extra semicolon is not allowed here in this dialect; use SystemVerilog mode instead [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/Conv_Acc.v:81]
+INFO: [Synth 8-11241] undeclared symbol 'rden_bm', assumed default net type 'wire' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/Conv_Acc.v:268]
+WARNING: [Synth 8-6901] identifier 'valid_fifo1' is used before its declaration [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:58]
+WARNING: [Synth 8-6901] identifier 'rd_en_fifo1' is used before its declaration [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:58]
+WARNING: [Synth 8-6901] identifier 'cnt_fifo1' is used before its declaration [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:60]
+WARNING: [Synth 8-6901] identifier 'cnt_fifo2' is used before its declaration [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:61]
+WARNING: [Synth 8-6901] identifier 'row' is used before its declaration [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:139]
+WARNING: [Synth 8-6901] identifier 'col' is used before its declaration [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:139]
+WARNING: [Synth 8-6901] identifier 'row' is used before its declaration [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/padding.v:43]
+WARNING: [Synth 8-6901] identifier 'col' is used before its declaration [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/padding.v:43]
+WARNING: [Synth 8-6901] identifier 'col' is used before its declaration [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/padding.v:51]
+WARNING: [Synth 8-6901] identifier 'row' is used before its declaration [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/padding.v:51]
+WARNING: [Synth 8-6901] identifier 'col' is used before its declaration [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/padding.v:51]
+WARNING: [Synth 8-6901] identifier 'row' is used before its declaration [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/padding.v:51]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:00 ; elapsed = 00:00:04 . Memory (MB): peak = 3122.234 ; gain = 357.688
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'system_wrapper' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/imports/hdl/system_wrapper.v:13]
+INFO: [Synth 8-6157] synthesizing module 'system' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:586]
+INFO: [Synth 8-6157] synthesizing module 'system_axi_bram_ctrl_0_0' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/system_axi_bram_ctrl_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_axi_bram_ctrl_0_0' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/system_axi_bram_ctrl_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'system_axi_dma_0_0' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/system_axi_dma_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_axi_dma_0_0' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/system_axi_dma_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'axi_dma_tstvec' of module 'system_axi_dma_0_0' is unconnected for instance 'axi_dma_0' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:931]
+WARNING: [Synth 8-7023] instance 'axi_dma_0' of module 'system_axi_dma_0_0' has 64 connections declared, but only 63 given [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:931]
+INFO: [Synth 8-6157] synthesizing module 'system_axi_smc_0' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/system_axi_smc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_axi_smc_0' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/system_axi_smc_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'M01_AXI_awqos' of module 'system_axi_smc_0' is unconnected for instance 'axi_smc' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:995]
+WARNING: [Synth 8-7071] port 'M01_AXI_awuser' of module 'system_axi_smc_0' is unconnected for instance 'axi_smc' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:995]
+WARNING: [Synth 8-7071] port 'M01_AXI_arqos' of module 'system_axi_smc_0' is unconnected for instance 'axi_smc' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:995]
+WARNING: [Synth 8-7071] port 'M01_AXI_aruser' of module 'system_axi_smc_0' is unconnected for instance 'axi_smc' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:995]
+WARNING: [Synth 8-7023] instance 'axi_smc' of module 'system_axi_smc_0' has 144 connections declared, but only 140 given [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:995]
+INFO: [Synth 8-6157] synthesizing module 'system_blk_mem_gen_0_0' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/system_blk_mem_gen_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_blk_mem_gen_0_0' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/system_blk_mem_gen_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'rsta_busy' of module 'system_blk_mem_gen_0_0' is unconnected for instance 'blk_mem_gen_0' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:1136]
+WARNING: [Synth 8-7071] port 'rstb_busy' of module 'system_blk_mem_gen_0_0' is unconnected for instance 'blk_mem_gen_0' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:1136]
+WARNING: [Synth 8-7023] instance 'blk_mem_gen_0' of module 'system_blk_mem_gen_0_0' has 16 connections declared, but only 14 given [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:1136]
+INFO: [Synth 8-6157] synthesizing module 'system_pl_reg0_v1_0_0_0' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/system_pl_reg0_v1_0_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_pl_reg0_v1_0_0_0' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/system_pl_reg0_v1_0_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'system_ps7_0_axi_periph_0' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:1405]
+INFO: [Synth 8-6157] synthesizing module 'm00_couplers_imp_1H7AUOX' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:13]
+INFO: [Synth 8-6155] done synthesizing module 'm00_couplers_imp_1H7AUOX' (0#1) [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:13]
+INFO: [Synth 8-6157] synthesizing module 'm01_couplers_imp_4Y7TYO' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:138]
+INFO: [Synth 8-6155] done synthesizing module 'm01_couplers_imp_4Y7TYO' (0#1) [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:138]
+INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_11SE3QO' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:284]
+INFO: [Synth 8-6157] synthesizing module 'system_auto_pc_0' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/system_auto_pc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_auto_pc_0' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/system_auto_pc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_11SE3QO' (0#1) [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:284]
+INFO: [Synth 8-6157] synthesizing module 'system_xbar_0' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/system_xbar_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_xbar_0' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/system_xbar_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_ps7_0_axi_periph_0' (0#1) [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:1405]
+INFO: [Synth 8-6157] synthesizing module 'system_rst_ps7_0_100M_0' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/system_rst_ps7_0_100M_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_rst_ps7_0_100M_0' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/system_rst_ps7_0_100M_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'system_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:1258]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'system_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:1258]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'system_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:1258]
+WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'system_rst_ps7_0_100M_0' is unconnected for instance 'rst_ps7_0_100M' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:1258]
+WARNING: [Synth 8-7023] instance 'rst_ps7_0_100M' of module 'system_rst_ps7_0_100M_0' has 10 connections declared, but only 6 given [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:1258]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:1265]
+INFO: [Synth 8-6157] synthesizing module 'system_system_ila_0_0' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/system_system_ila_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_system_ila_0_0' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/system_system_ila_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'system_xlconcat_0_0' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_xlconcat_0_0/synth/system_xlconcat_0_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'xlconcat_v2_1_4_xlconcat' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ipshared/4b67/hdl/xlconcat_v2_1_vl_rfs.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'xlconcat_v2_1_4_xlconcat' (0#1) [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ipshared/4b67/hdl/xlconcat_v2_1_vl_rfs.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'system_xlconcat_0_0' (0#1) [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_xlconcat_0_0/synth/system_xlconcat_0_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'system_zynq_ultra_ps_e_0_0' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/system_zynq_ultra_ps_e_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'system_zynq_ultra_ps_e_0_0' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/system_zynq_ultra_ps_e_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'maxigp2_awuser' of module 'system_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:1283]
+WARNING: [Synth 8-7071] port 'maxigp2_aruser' of module 'system_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:1283]
+WARNING: [Synth 8-7071] port 'saxigp2_bid' of module 'system_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:1283]
+WARNING: [Synth 8-7071] port 'saxigp2_rid' of module 'system_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:1283]
+WARNING: [Synth 8-7023] instance 'zynq_ultra_ps_e_0' of module 'system_zynq_ultra_ps_e_0_0' has 123 connections declared, but only 119 given [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:1283]
+INFO: [Synth 8-6155] done synthesizing module 'system' (0#1) [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:586]
+INFO: [Synth 8-6157] synthesizing module 'Conv_Acc' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/Conv_Acc.v:23]
+INFO: [Synth 8-6157] synthesizing module 'pll' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/pll_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'pll' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/pll_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fifo_acc' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/fifo_acc_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fifo_acc' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/fifo_acc_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'configurator' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/configurator.v:30]
+INFO: [Synth 8-6155] done synthesizing module 'configurator' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/configurator.v:30]
+INFO: [Synth 8-6157] synthesizing module 'padding' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/padding.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'padding' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/padding.v:23]
+INFO: [Synth 8-6157] synthesizing module 'conv_window' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:22]
+INFO: [Synth 8-6157] synthesizing module 'fifo_conv_window' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/fifo_conv_window_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fifo_conv_window' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/fifo_conv_window_stub.v:6]
+WARNING: [Synth 8-7071] port 'full' of module 'fifo_conv_window' is unconnected for instance 'fifo1' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:67]
+WARNING: [Synth 8-7071] port 'empty' of module 'fifo_conv_window' is unconnected for instance 'fifo1' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:67]
+WARNING: [Synth 8-7071] port 'wr_rst_busy' of module 'fifo_conv_window' is unconnected for instance 'fifo1' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:67]
+WARNING: [Synth 8-7071] port 'rd_rst_busy' of module 'fifo_conv_window' is unconnected for instance 'fifo1' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:67]
+WARNING: [Synth 8-7023] instance 'fifo1' of module 'fifo_conv_window' has 12 connections declared, but only 8 given [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:67]
+WARNING: [Synth 8-7071] port 'full' of module 'fifo_conv_window' is unconnected for instance 'fifo2' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:78]
+WARNING: [Synth 8-7071] port 'empty' of module 'fifo_conv_window' is unconnected for instance 'fifo2' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:78]
+WARNING: [Synth 8-7071] port 'wr_rst_busy' of module 'fifo_conv_window' is unconnected for instance 'fifo2' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:78]
+WARNING: [Synth 8-7071] port 'rd_rst_busy' of module 'fifo_conv_window' is unconnected for instance 'fifo2' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:78]
+WARNING: [Synth 8-7023] instance 'fifo2' of module 'fifo_conv_window' has 12 connections declared, but only 8 given [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:78]
+INFO: [Synth 8-6155] done synthesizing module 'conv_window' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:22]
+INFO: [Synth 8-6157] synthesizing module 'bram_mac' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/bram_mac.v:23]
+INFO: [Synth 8-6157] synthesizing module 'blk_mem' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/blk_mem_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'blk_mem' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/blk_mem_stub.v:6]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/bram_mac.v:132]
+INFO: [Synth 8-6157] synthesizing module 'ila_bram_mac' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/ila_bram_mac_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'ila_bram_mac' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/ila_bram_mac_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'bram_mac' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/bram_mac.v:23]
+INFO: [Synth 8-6157] synthesizing module 'fifo_signal_transfer' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/fifo_signal_transfer_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fifo_signal_transfer' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/.Xil/Vivado-119564-zc-os/realtime/fifo_signal_transfer_stub.v:6]
+WARNING: [Synth 8-7071] port 'full' of module 'fifo_signal_transfer' is unconnected for instance 'fifo_signal_transfer_inst' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/Conv_Acc.v:321]
+WARNING: [Synth 8-7071] port 'empty' of module 'fifo_signal_transfer' is unconnected for instance 'fifo_signal_transfer_inst' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/Conv_Acc.v:321]
+WARNING: [Synth 8-7071] port 'wr_rst_busy' of module 'fifo_signal_transfer' is unconnected for instance 'fifo_signal_transfer_inst' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/Conv_Acc.v:321]
+WARNING: [Synth 8-7071] port 'rd_rst_busy' of module 'fifo_signal_transfer' is unconnected for instance 'fifo_signal_transfer_inst' [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/Conv_Acc.v:321]
+WARNING: [Synth 8-7023] instance 'fifo_signal_transfer_inst' of module 'fifo_signal_transfer' has 12 connections declared, but only 8 given [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/Conv_Acc.v:321]
+INFO: [Synth 8-6155] done synthesizing module 'Conv_Acc' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/Conv_Acc.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'system_wrapper' (0#1) [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/imports/hdl/system_wrapper.v:13]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'system_ila_0'. This will prevent further optimization [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:1265]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'axi_dma_0'. This will prevent further optimization [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/synth/system.v:931]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'system_i'. This will prevent further optimization [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/imports/hdl/system_wrapper.v:38]
+WARNING: [Synth 8-6014] Unused sequential element sum2_reg[0] was removed.  [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:126]
+WARNING: [Synth 8-6014] Unused sequential element sum2_reg[1] was removed.  [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:126]
+WARNING: [Synth 8-6014] Unused sequential element sum2_reg[2] was removed.  [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:126]
+WARNING: [Synth 8-6014] Unused sequential element sum3_reg[0] was removed.  [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:130]
+WARNING: [Synth 8-6014] Unused sequential element sum3_reg[1] was removed.  [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:130]
+WARNING: [Synth 8-7137] Register conv_coff_reg[0] in module conv_window has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:47]
+WARNING: [Synth 8-7137] Register conv_coff_reg[1] in module conv_window has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:47]
+WARNING: [Synth 8-7137] Register conv_coff_reg[2] in module conv_window has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:47]
+WARNING: [Synth 8-7137] Register conv_coff_reg[3] in module conv_window has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:47]
+WARNING: [Synth 8-7137] Register conv_coff_reg[4] in module conv_window has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:47]
+WARNING: [Synth 8-7137] Register conv_coff_reg[5] in module conv_window has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:47]
+WARNING: [Synth 8-7137] Register conv_coff_reg[6] in module conv_window has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:47]
+WARNING: [Synth 8-7137] Register conv_coff_reg[7] in module conv_window has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:47]
+WARNING: [Synth 8-7137] Register conv_coff_reg[8] in module conv_window has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:47]
+WARNING: [Synth 8-7137] Register conv_coff_reg[9] in module conv_window has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/conv_window.v:47]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'bram_mac_inst'. This will prevent further optimization [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/Conv_Acc.v:271]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'your_instance_name'. This will prevent further optimization [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/bram_mac.v:132]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'blk_mem_inst'. This will prevent further optimization [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/bram_mac.v:117]
+WARNING: [Synth 8-6014] Unused sequential element cfg_coff_en_r_reg was removed.  [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/Conv_Acc.v:180]
+WARNING: [Synth 8-6014] Unused sequential element cfg_coff_en_rise_reg was removed.  [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/Conv_Acc.v:183]
+WARNING: [Synth 8-3848] Net stat_reg1 in module/entity Conv_Acc does not have driver. [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.srcs/sources_1/new/Conv_Acc.v:73]
+WARNING: [Synth 8-7129] Port reg3[31] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[30] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[29] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[28] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[27] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[26] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[25] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[24] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[23] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[22] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[21] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[20] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[19] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[18] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[17] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[16] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[15] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[14] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[13] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[12] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[11] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[10] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[9] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[8] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[7] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[6] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[5] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[4] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[3] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[2] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[1] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reg3[0] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_AXIS_MM2S_0_tkeep[3] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_AXIS_MM2S_0_tkeep[2] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_AXIS_MM2S_0_tkeep[1] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_AXIS_MM2S_0_tkeep[0] in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port M_AXIS_MM2S_0_tlast in module Conv_Acc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In3[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In4[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In5[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In6[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In7[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In8[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In9[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In10[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In11[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In12[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In13[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In14[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In15[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In16[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In17[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In18[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In19[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In20[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In21[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In22[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In23[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In24[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In25[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In26[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In27[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In28[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In29[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In30[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In31[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In32[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In33[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In34[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In35[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In36[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In37[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In38[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In39[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In40[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In41[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In42[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In43[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In44[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In45[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In46[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In47[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In48[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In49[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In50[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In51[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In52[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In53[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In54[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In55[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In56[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In57[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In58[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In59[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In60[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In61[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In62[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In63[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In64[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In65[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 3230.363 ; gain = 465.816
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 3248.289 ; gain = 483.742
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 3248.289 ; gain = 483.742
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.042 . Memory (MB): peak = 3248.289 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_axi_dma_0_0/system_axi_dma_0_0/system_axi_dma_0_0_in_context.xdc] for cell 'system_i/axi_dma_0'
+Finished Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_axi_dma_0_0/system_axi_dma_0_0/system_axi_dma_0_0_in_context.xdc] for cell 'system_i/axi_dma_0'
+Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_axi_smc_0/system_axi_smc_0/system_axi_smc_0_in_context.xdc] for cell 'system_i/axi_smc'
+Finished Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_axi_smc_0/system_axi_smc_0/system_axi_smc_0_in_context.xdc] for cell 'system_i/axi_smc'
+Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_xbar_0/system_xbar_0/system_xbar_0_in_context.xdc] for cell 'system_i/ps7_0_axi_periph/xbar'
+Finished Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_xbar_0/system_xbar_0/system_xbar_0_in_context.xdc] for cell 'system_i/ps7_0_axi_periph/xbar'
+Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0/system_auto_pc_0_in_context.xdc] for cell 'system_i/ps7_0_axi_periph/s00_couplers/auto_pc'
+Finished Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_auto_pc_0/system_auto_pc_0/system_auto_pc_0_in_context.xdc] for cell 'system_i/ps7_0_axi_periph/s00_couplers/auto_pc'
+Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_rst_ps7_0_100M_0/system_rst_ps7_0_100M_0/system_rst_ps7_0_100M_0_in_context.xdc] for cell 'system_i/rst_ps7_0_100M'
+Finished Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_rst_ps7_0_100M_0/system_rst_ps7_0_100M_0/system_rst_ps7_0_100M_0_in_context.xdc] for cell 'system_i/rst_ps7_0_100M'
+Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_system_ila_0_0/system_system_ila_0_0/system_system_ila_0_0_in_context.xdc] for cell 'system_i/system_ila_0'
+Finished Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_system_ila_0_0/system_system_ila_0_0/system_system_ila_0_0_in_context.xdc] for cell 'system_i/system_ila_0'
+Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_zynq_ultra_ps_e_0_0/system_zynq_ultra_ps_e_0_0/system_zynq_ultra_ps_e_0_0_in_context.xdc] for cell 'system_i/zynq_ultra_ps_e_0'
+Finished Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_zynq_ultra_ps_e_0_0/system_zynq_ultra_ps_e_0_0/system_zynq_ultra_ps_e_0_0_in_context.xdc] for cell 'system_i/zynq_ultra_ps_e_0'
+Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_pl_reg0_v1_0_0_0/system_pl_reg0_v1_0_0_0/system_pl_reg0_v1_0_0_0_in_context.xdc] for cell 'system_i/pl_reg0_v1_0_0'
+Finished Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_pl_reg0_v1_0_0_0/system_pl_reg0_v1_0_0_0/system_pl_reg0_v1_0_0_0_in_context.xdc] for cell 'system_i/pl_reg0_v1_0_0'
+Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_axi_bram_ctrl_0_0/system_axi_bram_ctrl_0_0/system_axi_bram_ctrl_0_0_in_context.xdc] for cell 'system_i/axi_bram_ctrl_0'
+Finished Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_axi_bram_ctrl_0_0/system_axi_bram_ctrl_0_0/system_axi_bram_ctrl_0_0_in_context.xdc] for cell 'system_i/axi_bram_ctrl_0'
+Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_blk_mem_gen_0_0/system_blk_mem_gen_0_0/system_blk_mem_gen_0_0_in_context.xdc] for cell 'system_i/blk_mem_gen_0'
+Finished Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/bd/system/ip/system_blk_mem_gen_0_0/system_blk_mem_gen_0_0/system_blk_mem_gen_0_0_in_context.xdc] for cell 'system_i/blk_mem_gen_0'
+Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/ip/fifo_acc/fifo_acc/fifo_acc_in_context.xdc] for cell 'Conv_Acc_inst/input_fifo'
+Finished Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/ip/fifo_acc/fifo_acc/fifo_acc_in_context.xdc] for cell 'Conv_Acc_inst/input_fifo'
+Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/ip/fifo_acc/fifo_acc/fifo_acc_in_context.xdc] for cell 'Conv_Acc_inst/output_fifo'
+Finished Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/ip/fifo_acc/fifo_acc/fifo_acc_in_context.xdc] for cell 'Conv_Acc_inst/output_fifo'
+Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/ip/pll/pll/pll_in_context.xdc] for cell 'Conv_Acc_inst/instance_name'
+Finished Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/ip/pll/pll/pll_in_context.xdc] for cell 'Conv_Acc_inst/instance_name'
+Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/ip/blk_mem/blk_mem/blk_mem_in_context.xdc] for cell 'Conv_Acc_inst/bram_mac_inst/blk_mem_inst'
+Finished Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/ip/blk_mem/blk_mem/blk_mem_in_context.xdc] for cell 'Conv_Acc_inst/bram_mac_inst/blk_mem_inst'
+Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/ip/fifo_signal_transfer/fifo_signal_transfer/fifo_signal_transfer_in_context.xdc] for cell 'Conv_Acc_inst/fifo_signal_transfer_inst'
+Finished Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/ip/fifo_signal_transfer/fifo_signal_transfer/fifo_signal_transfer_in_context.xdc] for cell 'Conv_Acc_inst/fifo_signal_transfer_inst'
+Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/ip/ila_bram_mac/ila_bram_mac/ila_bram_mac_in_context.xdc] for cell 'Conv_Acc_inst/bram_mac_inst/your_instance_name'
+Finished Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/ip/ila_bram_mac/ila_bram_mac/ila_bram_mac_in_context.xdc] for cell 'Conv_Acc_inst/bram_mac_inst/your_instance_name'
+Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/ip/fifo_conv_window/fifo_conv_window/fifo_conv_window_in_context.xdc] for cell 'Conv_Acc_inst/conv_window_inst/fifo1'
+Finished Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/ip/fifo_conv_window/fifo_conv_window/fifo_conv_window_in_context.xdc] for cell 'Conv_Acc_inst/conv_window_inst/fifo1'
+Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/ip/fifo_conv_window/fifo_conv_window/fifo_conv_window_in_context.xdc] for cell 'Conv_Acc_inst/conv_window_inst/fifo2'
+Finished Parsing XDC File [e:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.gen/sources_1/ip/fifo_conv_window/fifo_conv_window/fifo_conv_window_in_context.xdc] for cell 'Conv_Acc_inst/conv_window_inst/fifo2'
+Parsing XDC File [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 3376.320 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 3376.320 ; gain = 0.000
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'Conv_Acc_inst/bram_mac_inst/blk_mem_inst' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'system_i/blk_mem_gen_0' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:01 ; elapsed = 00:00:16 . Memory (MB): peak = 3376.320 ; gain = 611.773
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xczu19eg_SE-ffvc1760-2-i
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:01 ; elapsed = 00:00:16 . Memory (MB): peak = 3376.320 ; gain = 611.773
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for system_i. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/axi_dma_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/axi_smc. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/ps7_0_axi_periph/xbar. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/ps7_0_axi_periph/s00_couplers/auto_pc. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/ps7_0_axi_periph. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/rst_ps7_0_100M. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/system_ila_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/xlconcat_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/zynq_ultra_ps_e_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/pl_reg0_v1_0_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/axi_bram_ctrl_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for system_i/blk_mem_gen_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Conv_Acc_inst/input_fifo. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Conv_Acc_inst/output_fifo. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Conv_Acc_inst/instance_name. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Conv_Acc_inst/bram_mac_inst/blk_mem_inst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Conv_Acc_inst/fifo_signal_transfer_inst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Conv_Acc_inst/bram_mac_inst/your_instance_name. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Conv_Acc_inst/conv_window_inst/fifo1. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for Conv_Acc_inst/conv_window_inst/fifo2. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:01 ; elapsed = 00:00:16 . Memory (MB): peak = 3376.320 ; gain = 611.773
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:01 ; elapsed = 00:00:16 . Memory (MB): peak = 3376.320 ; gain = 611.773
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   64 Bit       Adders := 4     
+	   2 Input   32 Bit       Adders := 8     
+	   5 Input   32 Bit       Adders := 1     
+	   2 Input   18 Bit       Adders := 1     
+	   2 Input   10 Bit       Adders := 4     
+	   2 Input    4 Bit       Adders := 1     
++---Registers : 
+	               64 Bit    Registers := 9     
+	               32 Bit    Registers := 30    
+	               18 Bit    Registers := 2     
+	               10 Bit    Registers := 6     
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 9     
++---Multipliers : 
+	              32x32  Multipliers := 9     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 6     
+	   8 Input   32 Bit        Muxes := 3     
+	   2 Input   10 Bit        Muxes := 4     
+	   2 Input    4 Bit        Muxes := 1     
+	   3 Input    3 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 23    
+	   8 Input    1 Bit        Muxes := 11    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1968 (col length:264)
+BRAMs: 1968 (col length: RAMB18 264 RAMB36 132)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+DSP Report: Generating DSP p_0_out, operation Mode is: A*B2.
+DSP Report: register conv_data_reg[7] is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP product_reg[7], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register conv_data_reg[7] is absorbed into DSP product_reg[7].
+DSP Report: register product_reg[7] is absorbed into DSP product_reg[7].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[7].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[7].
+DSP Report: Generating DSP p_0_out, operation Mode is: A''*B.
+DSP Report: register p_0_out is absorbed into DSP p_0_out.
+DSP Report: register p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP product_reg[7], operation Mode is: (PCIN>>17)+A''*B.
+DSP Report: register product_reg[7] is absorbed into DSP product_reg[7].
+DSP Report: register product_reg[7] is absorbed into DSP product_reg[7].
+DSP Report: register product_reg[7] is absorbed into DSP product_reg[7].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[7].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[7].
+DSP Report: Generating DSP p_0_out, operation Mode is: A*B''.
+DSP Report: register conv_data_reg[7] is absorbed into DSP p_0_out.
+DSP Report: register conv_data_reg[6] is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP product_reg[6], operation Mode is: (PCIN>>17)+A''*B.
+DSP Report: register conv_data_reg[7] is absorbed into DSP product_reg[6].
+DSP Report: register conv_data_reg[6] is absorbed into DSP product_reg[6].
+DSP Report: register product_reg[6] is absorbed into DSP product_reg[6].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[6].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[6].
+DSP Report: Generating DSP p_0_out, operation Mode is: A''*B.
+DSP Report: register p_0_out is absorbed into DSP p_0_out.
+DSP Report: register p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP product_reg[6], operation Mode is: (PCIN>>17)+A''*B.
+DSP Report: register product_reg[6] is absorbed into DSP product_reg[6].
+DSP Report: register product_reg[6] is absorbed into DSP product_reg[6].
+DSP Report: register product_reg[6] is absorbed into DSP product_reg[6].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[6].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[6].
+DSP Report: Generating DSP p_0_out, operation Mode is: A*B''.
+DSP Report: register conv_data_reg[4] is absorbed into DSP p_0_out.
+DSP Report: register conv_data_reg[3] is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP product_reg[3], operation Mode is: (PCIN>>17)+A''*B.
+DSP Report: register conv_data_reg[4] is absorbed into DSP product_reg[3].
+DSP Report: register conv_data_reg[3] is absorbed into DSP product_reg[3].
+DSP Report: register product_reg[3] is absorbed into DSP product_reg[3].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[3].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[3].
+DSP Report: Generating DSP p_0_out, operation Mode is: A''*B.
+DSP Report: register p_0_out is absorbed into DSP p_0_out.
+DSP Report: register p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP product_reg[3], operation Mode is: (PCIN>>17)+A''*B.
+DSP Report: register product_reg[3] is absorbed into DSP product_reg[3].
+DSP Report: register product_reg[3] is absorbed into DSP product_reg[3].
+DSP Report: register product_reg[3] is absorbed into DSP product_reg[3].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[3].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[3].
+DSP Report: Generating DSP p_0_out, operation Mode is: A*B.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP product_reg[2], operation Mode is: (PCIN>>17)+A*B.
+DSP Report: register product_reg[2] is absorbed into DSP product_reg[2].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[2].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[2].
+DSP Report: Generating DSP p_0_out, operation Mode is: A2*B.
+DSP Report: register p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP product_reg[2], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register product_reg[2] is absorbed into DSP product_reg[2].
+DSP Report: register product_reg[2] is absorbed into DSP product_reg[2].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[2].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[2].
+DSP Report: Generating DSP p_0_out, operation Mode is: A*B.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP product_reg[5], operation Mode is: (PCIN>>17)+A*B.
+DSP Report: register product_reg[5] is absorbed into DSP product_reg[5].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[5].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[5].
+DSP Report: Generating DSP p_0_out, operation Mode is: A2*B.
+DSP Report: register p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP product_reg[5], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register product_reg[5] is absorbed into DSP product_reg[5].
+DSP Report: register product_reg[5] is absorbed into DSP product_reg[5].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[5].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[5].
+DSP Report: Generating DSP p_0_out, operation Mode is: A*B2.
+DSP Report: register conv_data_reg[4] is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP product_reg[4], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register conv_data_reg[4] is absorbed into DSP product_reg[4].
+DSP Report: register product_reg[4] is absorbed into DSP product_reg[4].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[4].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[4].
+DSP Report: Generating DSP p_0_out, operation Mode is: A''*B.
+DSP Report: register p_0_out is absorbed into DSP p_0_out.
+DSP Report: register p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP product_reg[4], operation Mode is: (PCIN>>17)+A''*B.
+DSP Report: register product_reg[4] is absorbed into DSP product_reg[4].
+DSP Report: register product_reg[4] is absorbed into DSP product_reg[4].
+DSP Report: register product_reg[4] is absorbed into DSP product_reg[4].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[4].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[4].
+DSP Report: Generating DSP p_0_out, operation Mode is: A*B.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP product_reg[8], operation Mode is: (PCIN>>17)+A*B.
+DSP Report: register product_reg[8] is absorbed into DSP product_reg[8].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[8].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[8].
+DSP Report: Generating DSP p_0_out, operation Mode is: A2*B.
+DSP Report: register p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP product_reg[8], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register product_reg[8] is absorbed into DSP product_reg[8].
+DSP Report: register product_reg[8] is absorbed into DSP product_reg[8].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[8].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[8].
+DSP Report: Generating DSP p_0_out, operation Mode is: A*B2.
+DSP Report: register conv_data_reg[1] is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP product_reg[1], operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register conv_data_reg[1] is absorbed into DSP product_reg[1].
+DSP Report: register product_reg[1] is absorbed into DSP product_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[1].
+DSP Report: Generating DSP p_0_out, operation Mode is: A''*B.
+DSP Report: register p_0_out is absorbed into DSP p_0_out.
+DSP Report: register p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP product_reg[1], operation Mode is: (PCIN>>17)+A''*B.
+DSP Report: register product_reg[1] is absorbed into DSP product_reg[1].
+DSP Report: register product_reg[1] is absorbed into DSP product_reg[1].
+DSP Report: register product_reg[1] is absorbed into DSP product_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[1].
+DSP Report: Generating DSP p_0_out, operation Mode is: A*B''.
+DSP Report: register conv_data_reg[1] is absorbed into DSP p_0_out.
+DSP Report: register conv_data_reg[0] is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP product_reg[0], operation Mode is: (PCIN>>17)+A''*B.
+DSP Report: register conv_data_reg[1] is absorbed into DSP product_reg[0].
+DSP Report: register conv_data_reg[0] is absorbed into DSP product_reg[0].
+DSP Report: register product_reg[0] is absorbed into DSP product_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[0].
+DSP Report: Generating DSP p_0_out, operation Mode is: A''*B.
+DSP Report: register p_0_out is absorbed into DSP p_0_out.
+DSP Report: register p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: operator p_0_out is absorbed into DSP p_0_out.
+DSP Report: Generating DSP product_reg[0], operation Mode is: (PCIN>>17)+A''*B.
+DSP Report: register product_reg[0] is absorbed into DSP product_reg[0].
+DSP Report: register product_reg[0] is absorbed into DSP product_reg[0].
+DSP Report: register product_reg[0] is absorbed into DSP product_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP product_reg[0].
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][47]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][46]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][45]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][44]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][43]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][42]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][41]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][40]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][39]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][38]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][37]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][36]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][35]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][34]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][33]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][32]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][31]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][30]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][29]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][28]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][27]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][26]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][25]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][24]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][23]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][22]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][21]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][20]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][19]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][18]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][17]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][47]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][46]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][45]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][44]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][43]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][42]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][41]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][40]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][39]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][38]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][37]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][36]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][35]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][34]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][33]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][32]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][31]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][30]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][29]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][28]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][27]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][26]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][25]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][24]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][23]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][22]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][21]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][20]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][19]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][18]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[7][17]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][47]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][46]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][45]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][44]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][43]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][42]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][41]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][40]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][39]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][38]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][37]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][36]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][35]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][34]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][33]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][32]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][31]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][30]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][29]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][28]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][27]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][26]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][25]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][24]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][23]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][22]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][21]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][20]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][19]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][18]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][17]) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][47]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][46]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][45]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][44]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][43]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][42]__0) is unused and will be removed from module system_wrapper.
+WARNING: [Synth 8-3332] Sequential element (Conv_Acc_inst/conv_window_inst/product_reg[6][41]__0) is unused and will be removed from module system_wrapper.
+INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:02 ; elapsed = 00:00:23 . Memory (MB): peak = 3376.320 ; gain = 611.773
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++------------+------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping      | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|conv_window | A*B2             | 18     | 15     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17)+A2*B  | 15     | 15     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|conv_window | A''*B            | 18     | 18     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17)+A''*B | 18     | 15     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 1    | 
+|conv_window | A*B''            | 18     | 15     | -      | -      | 48     | 0    | 2    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17)+A''*B | 15     | 15     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 1    | 
+|conv_window | A''*B            | 18     | 18     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17)+A''*B | 18     | 15     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 1    | 
+|conv_window | A*B''            | 18     | 15     | -      | -      | 48     | 0    | 2    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17)+A''*B | 15     | 15     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 1    | 
+|conv_window | A''*B            | 18     | 18     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17)+A''*B | 18     | 15     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 1    | 
+|conv_window | A*B              | 18     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17)+A*B   | 15     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|conv_window | A2*B             | 18     | 18     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17)+A2*B  | 18     | 15     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|conv_window | A*B              | 18     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17)+A*B   | 15     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|conv_window | A2*B             | 18     | 18     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17)+A2*B  | 18     | 15     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|conv_window | A*B2             | 18     | 15     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17)+A2*B  | 15     | 15     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|conv_window | A''*B            | 18     | 18     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17)+A''*B | 18     | 15     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 1    | 
+|conv_window | A*B              | 18     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17)+A*B   | 15     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|conv_window | A2*B             | 18     | 18     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17)+A2*B  | 18     | 15     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|conv_window | A*B2             | 18     | 15     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17)+A2*B  | 15     | 15     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|conv_window | A''*B            | 18     | 18     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17)+A''*B | 18     | 15     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 1    | 
+|conv_window | A*B''            | 18     | 15     | -      | -      | 48     | 0    | 2    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17)+A''*B | 15     | 15     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 1    | 
+|conv_window | A''*B            | 18     | 18     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17)+A''*B | 18     | 15     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 1    | 
++------------+------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:03 ; elapsed = 00:00:36 . Memory (MB): peak = 3844.555 ; gain = 1080.008
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:03 ; elapsed = 00:00:38 . Memory (MB): peak = 3853.602 ; gain = 1089.055
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:03 ; elapsed = 00:00:39 . Memory (MB): peak = 3876.082 ; gain = 1111.535
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[31] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[30] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[29] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[28] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[27] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[26] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[25] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[24] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[23] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[22] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[21] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[20] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[19] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[18] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[17] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[16] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[15] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[14] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[13] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[12] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[11] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[10] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[9] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[8] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[7] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[6] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[5] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[4] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg2[3] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[31] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[30] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[29] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[28] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[27] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[26] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[25] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[24] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[23] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[22] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[21] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[20] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[19] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[18] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[17] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[16] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[15] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[14] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[13] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[12] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[11] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[10] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[9] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[8] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[7] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[6] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[5] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[4] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[3] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[2] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[1] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin system_i:reg3[0] to constant 0
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:03 ; elapsed = 00:00:43 . Memory (MB): peak = 3888.852 ; gain = 1124.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:03 ; elapsed = 00:00:43 . Memory (MB): peak = 3888.852 ; gain = 1124.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:03 ; elapsed = 00:00:43 . Memory (MB): peak = 3888.852 ; gain = 1124.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:03 ; elapsed = 00:00:43 . Memory (MB): peak = 3888.852 ; gain = 1124.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:43 . Memory (MB): peak = 3888.852 ; gain = 1124.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:03 ; elapsed = 00:00:43 . Memory (MB): peak = 3888.852 ; gain = 1124.305
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++---------------+------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name    | RTL Name                                                   | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++---------------+------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|system_wrapper | Conv_Acc_inst/conv_window_inst/data_out_valid_pre_r_reg[3] | 4      | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|system_wrapper | Conv_Acc_inst/conv_window_inst/complete_pre_r_reg[6]       | 7      | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|system_wrapper | Conv_Acc_inst/cfg_data_en_r_reg[8]                         | 7      | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|system_wrapper | Conv_Acc_inst/rd_result_en_r_reg[9]                        | 8      | 1     | YES          | NO                 | YES               | 1      | 0       | 
++---------------+------------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++------------+--------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping        | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+--------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|conv_window | A'*B'              | 17     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17+A'*B')'  | 30     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 1    | 
+|conv_window | A''*B'             | 17     | 17     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17+A''*B')' | 17     | 18     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 1    | 
+|conv_window | A'*B''             | 17     | 18     | -      | -      | 48     | 1    | 2    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17+A''*B')' | 30     | 18     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 1    | 
+|conv_window | A''*B'             | 17     | 17     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17+A''*B')' | 17     | 18     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 1    | 
+|conv_window | A'*B''             | 17     | 18     | -      | -      | 48     | 1    | 2    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17+A''*B')' | 30     | 18     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 1    | 
+|conv_window | A''*B'             | 17     | 17     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17+A''*B')' | 17     | 18     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 1    | 
+|conv_window | A'*B'              | 17     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17+A'*B')'  | 30     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 1    | 
+|conv_window | A'*B'              | 17     | 17     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17+A'*B')'  | 17     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 1    | 
+|conv_window | A'*B'              | 17     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17+A'*B')'  | 30     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 1    | 
+|conv_window | A'*B'              | 17     | 17     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17+A'*B')'  | 17     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 1    | 
+|conv_window | A'*B''             | 17     | 18     | -      | -      | 48     | 1    | 2    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17+A''*B')' | 30     | 18     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 1    | 
+|conv_window | A''*B'             | 17     | 17     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17+A''*B')' | 17     | 18     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 1    | 
+|conv_window | A'*B'              | 17     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17+A'*B')'  | 30     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 1    | 
+|conv_window | A'*B'              | 17     | 17     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17+A'*B')'  | 17     | 18     | -      | -      | 48     | 1    | 1    | -    | -    | -     | 0    | 1    | 
+|conv_window | A'*B''             | 17     | 18     | -      | -      | 48     | 1    | 2    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17+A''*B')' | 30     | 18     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 1    | 
+|conv_window | A''*B'             | 17     | 17     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17+A''*B')' | 17     | 18     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 1    | 
+|conv_window | A'*B''             | 17     | 18     | -      | -      | 48     | 1    | 2    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17+A''*B')' | 30     | 18     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 1    | 
+|conv_window | A''*B'             | 17     | 17     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 0    | 
+|conv_window | (PCIN>>17+A''*B')' | 17     | 18     | -      | -      | 48     | 2    | 1    | -    | -    | -     | 0    | 1    | 
++------------+--------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes: 
++------+---------------------------+----------+
+|      |BlackBox name              |Instances |
++------+---------------------------+----------+
+|1     |system_xbar_0              |         1|
+|2     |system_auto_pc_0           |         1|
+|3     |system_axi_bram_ctrl_0_0   |         1|
+|4     |system_axi_dma_0_0         |         1|
+|5     |system_axi_smc_0           |         1|
+|6     |system_blk_mem_gen_0_0     |         1|
+|7     |system_pl_reg0_v1_0_0_0    |         1|
+|8     |system_rst_ps7_0_100M_0    |         1|
+|9     |system_system_ila_0_0      |         1|
+|10    |system_zynq_ultra_ps_e_0_0 |         1|
+|11    |blk_mem                    |         1|
+|12    |ila_bram_mac               |         1|
+|13    |pll                        |         1|
+|14    |fifo_acc                   |         2|
+|15    |fifo_signal_transfer       |         1|
+|16    |fifo_conv_window           |         2|
++------+---------------------------+----------+
+
+Report Cell Usage: 
++------+-------------------------+------+
+|      |Cell                     |Count |
++------+-------------------------+------+
+|1     |blk_mem                  |     1|
+|2     |fifo_acc                 |     2|
+|4     |fifo_conv_window         |     2|
+|6     |fifo_signal_transfer     |     1|
+|7     |ila_bram_mac             |     1|
+|8     |pll                      |     1|
+|9     |system_auto_pc           |     1|
+|10    |system_axi_bram_ctrl_0   |     1|
+|11    |system_axi_dma_0         |     1|
+|12    |system_axi_smc           |     1|
+|13    |system_blk_mem_gen_0     |     1|
+|14    |system_pl_reg0_v1_0_0    |     1|
+|15    |system_rst_ps7_0_100M    |     1|
+|16    |system_system_ila_0      |     1|
+|17    |system_xbar              |     1|
+|18    |system_zynq_ultra_ps_e_0 |     1|
+|19    |CARRY8                   |   172|
+|20    |DSP_ALU                  |    36|
+|21    |DSP_A_B_DATA             |    36|
+|24    |DSP_C_DATA               |    36|
+|25    |DSP_MULTIPLIER           |    36|
+|26    |DSP_M_DATA               |    36|
+|27    |DSP_OUTPUT               |    36|
+|29    |DSP_PREADD               |    36|
+|30    |DSP_PREADD_DATA          |    36|
+|31    |LUT1                     |    27|
+|32    |LUT2                     |   757|
+|33    |LUT3                     |   467|
+|34    |LUT4                     |   147|
+|35    |LUT5                     |   251|
+|36    |LUT6                     |   412|
+|37    |SRL16E                   |     4|
+|38    |FDCE                     |   155|
+|39    |FDPE                     |     2|
+|40    |FDRE                     |   770|
++------+-------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:03 ; elapsed = 00:00:43 . Memory (MB): peak = 3888.852 ; gain = 1124.305
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 626 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:02 ; elapsed = 00:00:38 . Memory (MB): peak = 3888.852 ; gain = 996.273
+Synthesis Optimization Complete : Time (s): cpu = 00:00:03 ; elapsed = 00:00:43 . Memory (MB): peak = 3888.852 ; gain = 1124.305
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.063 . Memory (MB): peak = 3901.906 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 208 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3957.883 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 36 instances were transformed.
+  DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 36 instances
+
+Synth Design complete | Checksum: 8d3810e6
+INFO: [Common 17-83] Releasing license: Synthesis
+85 Infos, 333 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:03 ; elapsed = 00:00:54 . Memory (MB): peak = 3957.883 ; gain = 2429.320
+INFO: [Common 17-1381] The checkpoint 'E:/vivao_workspace/SystemC/719C_PL_CONV_ACC/719C_PL_CONV_ACC.runs/synth_1/system_wrapper.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file system_wrapper_utilization_synth.rpt -pb system_wrapper_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sun Sep 20 10:56:29 2026...

@@ -1,0 +1,14 @@
+verilog xil_defaultlib --include "C:/Xilinx/Vivado/2023.1/data/xilinx_vip/include" --include "../../../../719C_FFT_DMA.gen/sources_1/bd/ps_dma_fft/ipshared/ec67/hdl" --include "../../../../719C_FFT_DMA.gen/sources_1/bd/ps_dma_fft/ipshared/f805/hdl" \
+"../../../bd/ps_dma_fft/ip/ps_dma_fft_zynq_ultra_ps_e_0_0/sim/ps_dma_fft_zynq_ultra_ps_e_0_0_vip_wrapper.v" \
+"../../../bd/ps_dma_fft/ip/ps_dma_fft_xbar_0/sim/ps_dma_fft_xbar_0.v" \
+"../../../bd/ps_dma_fft/ip/ps_dma_fft_blk_mem_gen_0_0/sim/ps_dma_fft_blk_mem_gen_0_0.v" \
+"../../../bd/ps_dma_fft/ip/ps_dma_fft_xbar_1/sim/ps_dma_fft_xbar_1.v" \
+"../../../bd/ps_dma_fft/sim/ps_dma_fft.v" \
+"../../../bd/ps_dma_fft/ip/ps_dma_fft_auto_pc_0/sim/ps_dma_fft_auto_pc_0.v" \
+"../../../bd/ps_dma_fft/ip/ps_dma_fft_auto_pc_1/sim/ps_dma_fft_auto_pc_1.v" \
+"../../../bd/ps_dma_fft/ip/ps_dma_fft_xlconcat_0_0/sim/ps_dma_fft_xlconcat_0_0.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

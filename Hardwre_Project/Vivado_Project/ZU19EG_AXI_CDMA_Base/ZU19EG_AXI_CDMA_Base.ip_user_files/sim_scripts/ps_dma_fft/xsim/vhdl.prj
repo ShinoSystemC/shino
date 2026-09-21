@@ -1,0 +1,9 @@
+vhdl xil_defaultlib  \
+"../../../bd/ps_dma_fft/ip/ps_dma_fft_xfft_0_0/sim/ps_dma_fft_xfft_0_0.vhd" \
+"../../../bd/ps_dma_fft/ip/ps_dma_fft_axi_dma_0_0/sim/ps_dma_fft_axi_dma_0_0.vhd" \
+"../../../bd/ps_dma_fft/ip/ps_dma_fft_axi_bram_ctrl_0_0/sim/ps_dma_fft_axi_bram_ctrl_0_0.vhd" \
+"../../../bd/ps_dma_fft/ip/ps_dma_fft_rst_ps8_0_96M_0/sim/ps_dma_fft_rst_ps8_0_96M_0.vhd" \
+"../../../bd/ps_dma_fft/ip/ps_dma_fft_axi_gpio_0_0/sim/ps_dma_fft_axi_gpio_0_0.vhd" \
+
+# Do not sort compile order
+nosort
