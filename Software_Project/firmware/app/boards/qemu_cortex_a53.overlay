@@ -1,0 +1,2 @@
+/* Fixed experiment apertures are mapped by the board MMU extension applied by
+ * firmware/fetch-zephyr.sh. No device driver or devicetree binding is needed. */

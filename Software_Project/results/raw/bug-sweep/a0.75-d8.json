@@ -1,0 +1,32 @@
+{
+  "schema": "shino.device/v1",
+  "device": "cdma",
+  "injected": {
+    "read_ns": 226,
+    "write_ns": 46,
+    "service_ns": 63736,
+    "icount_num": 5,
+    "icount_den": 6
+  },
+  "observed": {
+    "guest_ticks": 5720261,
+    "timer_hz": 62500000,
+    "runs": 1000,
+    "bytes": 4096,
+    "reads": 211900,
+    "busy": 210800,
+    "window_runs": 100,
+    "window_successes": 0,
+    "buggy_output_failures": 1000,
+    "fixed_transfer_failures": 0,
+    "payload_errors": 0,
+    "ok": 1
+  },
+  "completion_events": null,
+  "early_triggers": null,
+  "max_lateness_ns": null,
+  "host_elapsed_s": 16.700472992029972,
+  "pass": true,
+  "trace_enabled": false,
+  "deadline_checks": "not measured (trace disabled)"
+}

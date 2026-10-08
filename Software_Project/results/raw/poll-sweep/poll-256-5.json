@@ -1,0 +1,35 @@
+{
+  "schema": "shino.device/v1",
+  "device": "conv",
+  "injected": {
+    "read_ns": 287,
+    "write_ns": 50,
+    "service_ns": 45500,
+    "icount_num": 5,
+    "icount_den": 6
+  },
+  "observed": {
+    "guest_ticks": 3207803,
+    "timer_hz": 62500000,
+    "runs": 1000,
+    "width": 10,
+    "height": 10,
+    "kernel": 3,
+    "macs": 900000,
+    "poll_work": 256,
+    "reads": 27000,
+    "busy": 26000,
+    "buggy_output_failures": 1000,
+    "fixed_output_failures": 0,
+    "predeadline_changes": 0,
+    "status": 0,
+    "ok": 1
+  },
+  "completion_events": null,
+  "early_triggers": null,
+  "max_lateness_ns": null,
+  "host_elapsed_s": 2.970896965940483,
+  "pass": true,
+  "trace_enabled": false,
+  "deadline_checks": "not measured (trace disabled)"
+}

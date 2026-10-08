@@ -1,0 +1,20 @@
+{
+ "schema":"shino.graph-eval/v2",
+ "seed":23,
+ "processes":48,
+ "process_edges":166,
+ "ground_truth_incidence_edges":332,
+ "raw_precision":0.996988,
+ "raw_recall":0.996988,
+ "effective_precision":1.000000,
+ "effective_recall":1.000000,
+ "exact_graph_match":true,
+ "target_node":16,
+ "added_service_ns":0,
+ "target_finish_ns":793,
+ "downstream_finish_ns":1597,
+ "expected_sink_ns":2446,
+ "observed_sink_ns":2446,
+ "timing_error_ns":0,
+ "outputs_correct":true
+}

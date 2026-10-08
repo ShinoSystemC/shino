@@ -1,0 +1,104 @@
+{
+  "schema": "shino.poll-sweep/v2",
+  "rows": [
+    {
+      "poll_work": 0,
+      "repetitions": 5,
+      "reads": 156000,
+      "host_median_s": 11.992081843083724,
+      "host_stdev_s": 0.4365026684660126,
+      "corrected_failures": 0,
+      "early_triggers": null,
+      "all_ok": true,
+      "deadline_checks": "not measured (trace disabled)"
+    },
+    {
+      "poll_work": 4,
+      "repetitions": 5,
+      "reads": 154000,
+      "host_median_s": 11.890508381999098,
+      "host_stdev_s": 0.24196380154009295,
+      "corrected_failures": 0,
+      "early_triggers": null,
+      "all_ok": true,
+      "deadline_checks": "not measured (trace disabled)"
+    },
+    {
+      "poll_work": 8,
+      "repetitions": 5,
+      "reads": 135000,
+      "host_median_s": 10.688673173077404,
+      "host_stdev_s": 0.1777776004703072,
+      "corrected_failures": 0,
+      "early_triggers": null,
+      "all_ok": true,
+      "deadline_checks": "not measured (trace disabled)"
+    },
+    {
+      "poll_work": 16,
+      "repetitions": 5,
+      "reads": 119000,
+      "host_median_s": 9.384135777014308,
+      "host_stdev_s": 0.48420713170315716,
+      "corrected_failures": 0,
+      "early_triggers": null,
+      "all_ok": true,
+      "deadline_checks": "not measured (trace disabled)"
+    },
+    {
+      "poll_work": 32,
+      "repetitions": 5,
+      "reads": 96000,
+      "host_median_s": 7.782359268050641,
+      "host_stdev_s": 0.4083162915645206,
+      "corrected_failures": 0,
+      "early_triggers": null,
+      "all_ok": true,
+      "deadline_checks": "not measured (trace disabled)"
+    },
+    {
+      "poll_work": 64,
+      "repetitions": 5,
+      "reads": 70000,
+      "host_median_s": 5.777297131018713,
+      "host_stdev_s": 0.08986498269229887,
+      "corrected_failures": 0,
+      "early_triggers": null,
+      "all_ok": true,
+      "deadline_checks": "not measured (trace disabled)"
+    },
+    {
+      "poll_work": 128,
+      "repetitions": 5,
+      "reads": 45000,
+      "host_median_s": 4.575220809900202,
+      "host_stdev_s": 0.13103500458328113,
+      "corrected_failures": 0,
+      "early_triggers": null,
+      "all_ok": true,
+      "deadline_checks": "not measured (trace disabled)"
+    },
+    {
+      "poll_work": 256,
+      "repetitions": 5,
+      "reads": 27000,
+      "host_median_s": 2.970896965940483,
+      "host_stdev_s": 0.16525059910330528,
+      "corrected_failures": 0,
+      "early_triggers": null,
+      "all_ok": true,
+      "deadline_checks": "not measured (trace disabled)"
+    },
+    {
+      "poll_work": 512,
+      "repetitions": 5,
+      "reads": 15000,
+      "host_median_s": 1.9689734049607068,
+      "host_stdev_s": 0.12325784463228233,
+      "corrected_failures": 0,
+      "early_triggers": null,
+      "all_ok": true,
+      "deadline_checks": "not measured (trace disabled)"
+    }
+  ]
+}

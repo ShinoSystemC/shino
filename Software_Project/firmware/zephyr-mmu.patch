@@ -1,0 +1,20 @@
+diff --git a/soc/arm/qemu_cortex_a53/mmu_regions.c b/soc/arm/qemu_cortex_a53/mmu_regions.c
+index b5d12057..c0616fc7 100644
+--- a/soc/arm/qemu_cortex_a53/mmu_regions.c
++++ b/soc/arm/qemu_cortex_a53/mmu_regions.c
+@@ -19,6 +19,15 @@ static const struct arm_mmu_region mmu_regions[] = {
+ 			      DT_REG_ADDR_BY_IDX(DT_INST(0, arm_gic), 1),
+ 			      DT_REG_SIZE_BY_IDX(DT_INST(0, arm_gic), 1),
+ 			      MT_DEVICE_nGnRnE | MT_P_RW_U_NA | MT_DEFAULT_SECURE_STATE),
++
++	MMU_REGION_FLAT_ENTRY("Shino CDMA registers", 0x80000000, 0x10000,
++			      MT_DEVICE_nGnRnE | MT_P_RW_U_NA | MT_DEFAULT_SECURE_STATE),
++	MMU_REGION_FLAT_ENTRY("Shino CDMA memory", 0x82000000, 0x100000,
++			      MT_NORMAL | MT_P_RW_U_NA | MT_DEFAULT_SECURE_STATE),
++	MMU_REGION_FLAT_ENTRY("Shino convolution registers", 0x80010000, 0x1000,
++			      MT_DEVICE_nGnRnE | MT_P_RW_U_NA | MT_DEFAULT_SECURE_STATE),
++	MMU_REGION_FLAT_ENTRY("Shino convolution memory", 0xa0000000, 0x100000,
++			      MT_NORMAL | MT_P_RW_U_NA | MT_DEFAULT_SECURE_STATE),
+ };
+ 
+ const struct arm_mmu_config mmu_config = {

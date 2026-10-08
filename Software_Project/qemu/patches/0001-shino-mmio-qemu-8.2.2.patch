@@ -1,0 +1,504 @@
+diff --git a/accel/tcg/icount-common.c b/accel/tcg/icount-common.c
+index ec57192..7b89a9b 100644
+--- a/accel/tcg/icount-common.c
++++ b/accel/tcg/icount-common.c
+@@ -157,9 +157,36 @@ int64_t icount_get(void)
+ 
+ int64_t icount_to_ns(int64_t icount)
+ {
++    uint64_t num = qatomic_read(&timers_state.icount_ns_num);
++    uint64_t den = qatomic_read(&timers_state.icount_ns_den);
++
++    if (num && den) {
++        return (__int128)icount * num / den;
++    }
+     return icount << qatomic_read(&timers_state.icount_time_shift);
+ }
+ 
++int64_t icount_advance_virtual_time(int64_t target_ns)
++{
++    int64_t now;
++
++    if (!icount_enabled()) {
++        return qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++    }
++    now = icount_get();
++    if (target_ns <= now) {
++        return now;
++    }
++    seqlock_write_lock(&timers_state.vm_clock_seqlock,
++                       &timers_state.vm_clock_lock);
++    qatomic_set_i64(&timers_state.qemu_icount_bias,
++                    timers_state.qemu_icount_bias + target_ns - now);
++    seqlock_write_unlock(&timers_state.vm_clock_seqlock,
++                         &timers_state.vm_clock_lock);
++    qemu_clock_notify(QEMU_CLOCK_VIRTUAL);
++    return target_ns;
++}
++
+ /*
+  * Correlation between real and virtual time is always going to be
+  * fairly approximate, so ignore small variation.
+@@ -226,6 +253,12 @@ static void icount_adjust_vm(void *opaque)
+ 
+ int64_t icount_round(int64_t count)
+ {
++    uint64_t num = qatomic_read(&timers_state.icount_ns_num);
++    uint64_t den = qatomic_read(&timers_state.icount_ns_den);
++
++    if (num && den) {
++        return ((__int128)count * den + num - 1) / num;
++    }
+     int shift = qatomic_read(&timers_state.icount_time_shift);
+     return (count + (1 << shift) - 1) >> shift;
+ }
+@@ -425,6 +458,17 @@ void icount_configure(QemuOpts *opts, Error **errp)
+     bool sleep = qemu_opt_get_bool(opts, "sleep", true);
+     bool align = qemu_opt_get_bool(opts, "align", false);
+     long time_shift = -1;
++    uint64_t ns_num = qemu_opt_get_number(opts, "ns-num", 0);
++    uint64_t ns_den = qemu_opt_get_number(opts, "ns-den", 0);
++
++    if ((ns_num == 0) != (ns_den == 0)) {
++        error_setg(errp, "icount: ns-num and ns-den must be specified together");
++        return;
++    }
++    if (ns_num && option && strcmp(option, "0") != 0) {
++        error_setg(errp, "icount: rational timing requires shift=0");
++        return;
++    }
+ 
+     if (!option) {
+         if (qemu_opt_get(opts, "align") != NULL) {
+@@ -462,6 +506,8 @@ void icount_configure(QemuOpts *opts, Error **errp)
+ 
+     if (time_shift >= 0) {
+         timers_state.icount_time_shift = time_shift;
++        timers_state.icount_ns_num = ns_num;
++        timers_state.icount_ns_den = ns_den;
+         icount_enable_precise();
+         return;
+     }
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index be2856c..65f0207 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2948,6 +2948,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_AMD_XGBE);
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
++    machine_class_allow_dynamic_sysbus_dev(mc, "shino-mmio");
+ #ifdef CONFIG_TPM
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
+ #endif
+diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
+index eebcd28..7c6fc10 100644
+--- a/hw/core/sysbus-fdt.c
++++ b/hw/core/sysbus-fdt.c
+@@ -495,6 +495,7 @@ static const BindingEntry bindings[] = {
+     TYPE_BINDING(TYPE_TPM_TIS_SYSBUS, add_tpm_tis_fdt_node),
+ #endif
+     TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
++    TYPE_BINDING("shino-mmio", no_fdt_node),
+     TYPE_BINDING("", NULL), /* last element */
+ };
+ 
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 36c20d5..ff2bc0d 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -1,5 +1,6 @@
+ system_ss.add(when: 'CONFIG_APPLESMC', if_true: files('applesmc.c'))
+ system_ss.add(when: 'CONFIG_EDU', if_true: files('edu.c'))
++system_ss.add(files('shino-mmio.c'))
+ system_ss.add(when: 'CONFIG_FW_CFG_DMA', if_true: files('vmcoreinfo.c'))
+ system_ss.add(when: 'CONFIG_ISA_DEBUG', if_true: files('debugexit.c'))
+ system_ss.add(when: 'CONFIG_ISA_TESTDEV', if_true: files('pc-testdev.c'))
+diff --git a/hw/misc/shino-mmio.c b/hw/misc/shino-mmio.c
+new file mode 100644
+index 0000000..8ce50b1
+--- /dev/null
++++ b/hw/misc/shino-mmio.c
+@@ -0,0 +1,265 @@
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "qemu/error-report.h"
++#include "qemu/timer.h"
++#include "hw/misc/shino-mmio.h"
++#include "hw/qdev-properties.h"
++#include "hw/sysbus.h"
++#include "sysemu/cpu-timers.h"
++
++#include <fcntl.h>
++#include <sys/mman.h>
++#include <sys/stat.h>
++
++#define SHINO_MAGIC 0x53484e4fU
++#define SHINO_VERSION 3U
++
++typedef enum ShinoOperation { SHINO_READ = 0, SHINO_WRITE = 1 } ShinoOperation;
++typedef enum ShinoState {
++    SHINO_IDLE = 0, SHINO_REQUEST = 1, SHINO_RESPONSE = 2,
++    SHINO_SHUTDOWN = 3, SHINO_ERROR = 4,
++} ShinoState;
++
++typedef struct ShinoMessage {
++    uint64_t sequence, address, value, issued_virtual_ns, visible_virtual_ns;
++    uint32_t width;
++    ShinoOperation operation;
++    int32_t status;
++    uint32_t reserved;
++} ShinoMessage;
++
++typedef struct ShinoTransport {
++    uint32_t magic, version;
++    uint64_t epoch;
++    uint32_t qemu_ready, bridge_ready;
++    uint64_t qemu_heartbeat, bridge_heartbeat;
++    uint64_t completion_sequence, completion_virtual_ns;
++    uint64_t completion_trigger_virtual_ns;
++    uint32_t completion_pending, completion_ack;
++    ShinoState state;
++    uint32_t reserved;
++    ShinoMessage message;
++} ShinoTransport;
++
++static void shino_completion_cb(void *opaque)
++{
++    ShinoMmioState *s = opaque;
++    ShinoTransport *t = s->transport;
++    if (!t || !qatomic_read(&t->completion_pending)) {
++        return;
++    }
++    /* QEMU virtual time is the authority: the callback is dispatched only
++     * after the configured guest-virtual deadline. The bridge performs the
++     * functional SystemC commit and acknowledges completion. */
++    qatomic_set(&t->completion_trigger_virtual_ns,
++                qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
++    smp_wmb();
++    qatomic_set(&t->completion_pending, 2);
++}
++
++static void shino_arm_completion(ShinoMmioState *s)
++{
++    ShinoTransport *t = s->transport;
++    if (qatomic_read(&t->completion_pending) == 1) {
++        timer_mod_ns(s->completion_timer, t->completion_virtual_ns);
++    }
++}
++
++static uint64_t shino_access(ShinoMmioState *s, hwaddr offset,
++                             uint64_t value, unsigned size, bool write,
++                             bool cdma)
++{
++    ShinoTransport *t = s->transport;
++    const int64_t deadline = g_get_monotonic_time() + s->timeout_ms * 1000;
++    while (qatomic_read(&t->bridge_ready) == 0) {
++        if (g_get_monotonic_time() >= deadline) {
++            error_report("shino-mmio: bridge readiness timeout");
++            return UINT64_MAX;
++        }
++        g_usleep(50);
++    }
++    while (qatomic_read(&t->state) != SHINO_IDLE) {
++        if (g_get_monotonic_time() >= deadline) {
++            error_report("shino-mmio: transport busy timeout");
++            return UINT64_MAX;
++        }
++        g_usleep(10);
++    }
++    ShinoMessage *m = &t->message;
++    m->sequence = ++s->sequence;
++    m->address = (cdma ? s->cdma_base : s->mmio_base) + offset;
++    m->value = value;
++    m->issued_virtual_ns = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++    m->visible_virtual_ns = 0;
++    m->width = size;
++    m->operation = write ? SHINO_WRITE : SHINO_READ;
++    m->status = 0;
++    smp_wmb();
++    qatomic_set(&t->state, SHINO_REQUEST);
++    while (qatomic_read(&t->state) == SHINO_REQUEST) {
++        if (g_get_monotonic_time() >= deadline) {
++            error_report("shino-mmio: response timeout at 0x%" HWADDR_PRIx, offset);
++            qatomic_set(&t->state, SHINO_ERROR);
++            return UINT64_MAX;
++        }
++        g_usleep(50);
++    }
++    smp_rmb();
++    if (qatomic_read(&t->state) != SHINO_RESPONSE || m->status != 0) {
++        error_report("shino-mmio: bridge error %d", m->status);
++        qatomic_set(&t->state, SHINO_IDLE);
++        return UINT64_MAX;
++    }
++    value = m->value;
++    /* The external functional model may take arbitrary host time. Charge only
++     * the modeled deadline to the guest's fixed-icount virtual clock. */
++    if (s->advance_virtual_time) {
++        icount_advance_virtual_time(m->visible_virtual_ns);
++    }
++    qatomic_inc(&t->qemu_heartbeat);
++    qatomic_set(&t->state, SHINO_IDLE);
++    shino_arm_completion(s);
++    return value;
++}
++
++static uint64_t shino_read(void *opaque, hwaddr offset, unsigned size)
++{
++    return shino_access(opaque, offset, 0, size, false, false);
++}
++
++static void shino_write(void *opaque, hwaddr offset, uint64_t value, unsigned size)
++{
++    shino_access(opaque, offset, value, size, true, false);
++}
++static uint64_t shino_cdma_read(void *opaque, hwaddr offset, unsigned size)
++{
++    return shino_access(opaque, offset, 0, size, false, true);
++}
++static void shino_cdma_write(void *opaque, hwaddr offset, uint64_t value, unsigned size)
++{
++    shino_access(opaque, offset, value, size, true, true);
++}
++
++static const MemoryRegionOps shino_ops = {
++    .read = shino_read, .write = shino_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = { .min_access_size = 1, .max_access_size = 8, .unaligned = false },
++};
++
++static const MemoryRegionOps shino_cdma_ops = {
++    .read = shino_cdma_read, .write = shino_cdma_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = { .min_access_size = 1, .max_access_size = 8, .unaligned = false },
++};
++
++static void shino_realize(DeviceState *dev, Error **errp)
++{
++    ShinoMmioState *s = SHINO_MMIO(dev);
++    s->shm_fd = shm_open(s->shm_name, O_RDWR | O_CREAT, 0666);
++    if (s->shm_fd < 0 || ftruncate(s->shm_fd, sizeof(ShinoTransport)) < 0) {
++        error_setg_errno(errp, errno, "shino-mmio: cannot create %s", s->shm_name);
++        return;
++    }
++    s->transport = mmap(NULL, sizeof(ShinoTransport), PROT_READ | PROT_WRITE,
++                        MAP_SHARED, s->shm_fd, 0);
++    if (s->transport == MAP_FAILED) {
++        error_setg_errno(errp, errno, "shino-mmio: cannot map transport");
++        s->transport = NULL;
++        return;
++    }
++    ShinoTransport *t = s->transport;
++    memset(t, 0, sizeof(*t));
++    t->magic = SHINO_MAGIC; t->version = SHINO_VERSION; t->epoch = 1;
++    qatomic_set(&t->state, SHINO_IDLE);
++    qatomic_set(&t->qemu_ready, 1);
++    s->completion_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL,
++                                       shino_completion_cb, s);
++    memory_region_init_io(&s->iomem, OBJECT(s), &shino_ops, s,
++                          TYPE_SHINO_MMIO, s->mmio_size);
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
++    memory_region_init_io(&s->cdma_iomem, OBJECT(s), &shino_cdma_ops, s,
++                          "shino-cdma", s->cdma_size);
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->cdma_iomem);
++    memory_region_init_ram_from_file(&s->bram, OBJECT(s), "shino-bram",
++                                     s->bram_size, 0, RAM_SHARED,
++                                     s->bram_path, 0, errp);
++    if (*errp) {
++        return;
++    }
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->bram);
++    memory_region_init_ram_from_file(&s->cdma_bram, OBJECT(s), "shino-cdma-bram",
++                                     s->cdma_bram_size, 0, RAM_SHARED,
++                                     s->cdma_bram_path, 0, errp);
++    if (*errp) {
++        return;
++    }
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->cdma_bram);
++    memory_region_init_ram_from_file(&s->conv_bram, OBJECT(s), "shino-conv-bram",
++                                     s->conv_bram_size, 0, RAM_SHARED,
++                                     s->conv_bram_path, 0, errp);
++    if (*errp) {
++        return;
++    }
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->conv_bram);
++    sysbus_mmio_map(SYS_BUS_DEVICE(s), 0, s->mmio_base);
++    sysbus_mmio_map(SYS_BUS_DEVICE(s), 1, s->cdma_base);
++    sysbus_mmio_map(SYS_BUS_DEVICE(s), 2, s->bram_base);
++    sysbus_mmio_map(SYS_BUS_DEVICE(s), 3, s->cdma_bram_base);
++    sysbus_mmio_map(SYS_BUS_DEVICE(s), 4, s->conv_bram_base);
++}
++
++static void shino_unrealize(DeviceState *dev)
++{
++    ShinoMmioState *s = SHINO_MMIO(dev);
++    if (s->completion_timer) {
++        timer_free(s->completion_timer);
++        s->completion_timer = NULL;
++    }
++    if (s->transport) {
++        ShinoTransport *t = s->transport;
++        qatomic_set(&t->qemu_ready, 0); qatomic_set(&t->state, SHINO_SHUTDOWN);
++        munmap(t, sizeof(*t));
++    }
++    if (s->shm_fd >= 0) close(s->shm_fd);
++}
++
++static Property shino_properties[] = {
++    DEFINE_PROP_UINT64("mmio-base", ShinoMmioState, mmio_base, 0xa6000000),
++    DEFINE_PROP_UINT64("mmio-size", ShinoMmioState, mmio_size, 0x1000),
++    DEFINE_PROP_UINT64("bram-base", ShinoMmioState, bram_base, 0xb0000000),
++    DEFINE_PROP_UINT64("bram-size", ShinoMmioState, bram_size, 0x1000000),
++    DEFINE_PROP_UINT64("cdma-base", ShinoMmioState, cdma_base, 0x80000000),
++    DEFINE_PROP_UINT64("cdma-size", ShinoMmioState, cdma_size, 0x10000),
++    DEFINE_PROP_UINT64("cdma-bram-base", ShinoMmioState, cdma_bram_base, 0x82000000),
++    DEFINE_PROP_UINT64("cdma-bram-size", ShinoMmioState, cdma_bram_size, 0x100000),
++    DEFINE_PROP_UINT64("conv-bram-base", ShinoMmioState, conv_bram_base, 0xa0000000),
++    DEFINE_PROP_UINT64("conv-bram-size", ShinoMmioState, conv_bram_size, 0x100000),
++    DEFINE_PROP_STRING("shm-name", ShinoMmioState, shm_name),
++    DEFINE_PROP_STRING("bram-path", ShinoMmioState, bram_path),
++    DEFINE_PROP_STRING("cdma-bram-path", ShinoMmioState, cdma_bram_path),
++    DEFINE_PROP_STRING("conv-bram-path", ShinoMmioState, conv_bram_path),
++    DEFINE_PROP_UINT64("timeout-ms", ShinoMmioState, timeout_ms, 5000),
++    DEFINE_PROP_BOOL("advance-virtual-time", ShinoMmioState,
++                     advance_virtual_time, false),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void shino_init(Object *obj)
++{
++    ShinoMmioState *s = SHINO_MMIO(obj);
++    s->shm_fd = -1;
++}
++static void shino_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    dc->realize = shino_realize; dc->unrealize = shino_unrealize;
++    dc->user_creatable = true;
++    device_class_set_props(dc, shino_properties);
++}
++static const TypeInfo shino_info = {
++    .name = TYPE_SHINO_MMIO, .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(ShinoMmioState), .instance_init = shino_init,
++    .class_init = shino_class_init,
++};
++static void shino_register_types(void) { type_register_static(&shino_info); }
++type_init(shino_register_types)
+diff --git a/include/hw/misc/shino-mmio.h b/include/hw/misc/shino-mmio.h
+new file mode 100644
+index 0000000..6e8f49d
+--- /dev/null
++++ b/include/hw/misc/shino-mmio.h
+@@ -0,0 +1,39 @@
++#ifndef HW_MISC_SHINO_MMIO_H
++#define HW_MISC_SHINO_MMIO_H
++
++#include "hw/sysbus.h"
++#include "qemu/timer.h"
++
++#define TYPE_SHINO_MMIO "shino-mmio"
++OBJECT_DECLARE_SIMPLE_TYPE(ShinoMmioState, SHINO_MMIO)
++
++struct ShinoMmioState {
++    SysBusDevice parent_obj;
++    MemoryRegion iomem;
++    MemoryRegion bram;
++    MemoryRegion cdma_iomem;
++    MemoryRegion cdma_bram;
++    MemoryRegion conv_bram;
++    uint64_t mmio_base;
++    uint64_t mmio_size;
++    uint64_t bram_base;
++    uint64_t bram_size;
++    uint64_t cdma_base;
++    uint64_t cdma_size;
++    uint64_t cdma_bram_base;
++    uint64_t cdma_bram_size;
++    uint64_t conv_bram_base;
++    uint64_t conv_bram_size;
++    char *shm_name;
++    char *bram_path;
++    char *cdma_bram_path;
++    char *conv_bram_path;
++    uint64_t timeout_ms;
++    bool advance_virtual_time;
++    int shm_fd;
++    void *transport;
++    QEMUTimer *completion_timer;
++    uint64_t sequence;
++};
++
++#endif
+diff --git a/include/sysemu/cpu-timers-internal.h b/include/sysemu/cpu-timers-internal.h
+index 94bb739..eaefe59 100644
+--- a/include/sysemu/cpu-timers-internal.h
++++ b/include/sysemu/cpu-timers-internal.h
+@@ -41,8 +41,11 @@ typedef struct TimersState {
+ 
+     int16_t cpu_ticks_enabled;
+ 
+-    /* Conversion factor from emulated instructions to virtual clock ticks.  */
++    /* Conversion factor from emulated instructions to virtual clock ticks. */
+     int16_t icount_time_shift;
++    /* Optional fixed rational nanoseconds per instruction. Zero disables it. */
++    uint64_t icount_ns_num;
++    uint64_t icount_ns_den;
+     /* Icount delta used for shift auto adjust. */
+     int64_t last_delta;
+ 
+diff --git a/include/sysemu/cpu-timers.h b/include/sysemu/cpu-timers.h
+index 2e786fe..f3880b6 100644
+--- a/include/sysemu/cpu-timers.h
++++ b/include/sysemu/cpu-timers.h
+@@ -49,6 +49,8 @@ int64_t icount_get(void);
+  * runtime in adaptive mode.
+  */
+ int64_t icount_to_ns(int64_t icount);
++/* Advance fixed-icount virtual time to an external device deadline. */
++int64_t icount_advance_virtual_time(int64_t target_ns);
+ 
+ /* configure the icount options, including "shift" */
+ void icount_configure(QemuOpts *opts, Error **errp);
+diff --git a/system/vl.c b/system/vl.c
+index e18fa3c..84e57c3 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -433,6 +433,12 @@ static QemuOptsList qemu_icount_opts = {
+         {
+             .name = "shift",
+             .type = QEMU_OPT_STRING,
++        }, {
++            .name = "ns-num",
++            .type = QEMU_OPT_NUMBER,
++        }, {
++            .name = "ns-den",
++            .type = QEMU_OPT_NUMBER,
+         }, {
+             .name = "align",
+             .type = QEMU_OPT_BOOL,
+@@ -1048,7 +1054,9 @@ static void select_vgahw(const MachineClass *machine_class, const char *p)
+         const VGAInterfaceInfo *ti = &vga_interfaces[t];
+         if (ti->opt_name && strstart(p, ti->opt_name, &opts)) {
+             if (!vga_interface_available(t)) {
+-                error_report("%s not available", ti->name);
++                error_report("%s not available. Perhaps you want to install %s package?", ti->name,
++                        /* qxl is in spice, some are in opengl, the some are in common */
++                        !strcmp(ti->opt_name, "qxl") ? "qemu-system-modules-spice" : "qemu-system-modules-opengl");
+                 exit(1);
+             }
+             vga_interface_type = t;
+@@ -3499,7 +3507,12 @@ void qemu_init(int argc, char **argv)
+                 break;
+ #ifdef CONFIG_SPICE
+             case QEMU_OPTION_spice:
+-                opts = qemu_opts_parse_noisily(qemu_find_opts("spice"), optarg, false);
++                olist = qemu_find_opts("spice");
++                if (!olist) {
++                    error_report("Perhaps you want to install qemu-system-modules-spice package?");
++                    exit(1);
++                }
++                opts = qemu_opts_parse_noisily(olist, optarg, false);
+                 if (!opts) {
+                     exit(1);
+                 }

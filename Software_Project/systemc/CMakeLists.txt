@@ -1,0 +1,30 @@
+cmake_minimum_required(VERSION 3.16)
+project(shino_review_artifact LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+add_compile_options(-Wall -Wextra -Wpedantic)
+
+add_library(shino_core
+  src/config.cpp src/latency_engine.cpp src/causal_graph.cpp src/mmio.cpp
+  src/transport.cpp src/trace.cpp src/replay.cpp src/register_bank.cpp)
+target_include_directories(shino_core PUBLIC include)
+
+add_executable(test-core tests/test_core.cpp)
+target_link_libraries(test-core PRIVATE shino_core)
+add_executable(shino-wrapper tools/wrapper_main.cpp)
+target_link_libraries(shino-wrapper PRIVATE shino_core pthread rt)
+add_executable(test-transport tests/test_transport.cpp)
+target_link_libraries(test-transport PRIVATE shino_core pthread rt)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(SYSTEMC REQUIRED IMPORTED_TARGET systemc)
+add_executable(systemc-graph-eval tools/systemc_graph_eval.cpp)
+target_link_libraries(systemc-graph-eval PRIVATE shino_core PkgConfig::SYSTEMC)
+add_executable(shino-model models/main.cpp)
+target_link_libraries(shino-model PRIVATE shino_core PkgConfig::SYSTEMC pthread rt)
+add_executable(shino-bridge bridge/qemu_bridge.cpp)
+target_link_libraries(shino-bridge PRIVATE shino_core pthread rt)
+
+enable_testing()
+add_test(NAME core COMMAND test-core)
+add_test(NAME transport COMMAND test-transport)
+add_test(NAME systemc-graph COMMAND systemc-graph-eval systemc-graph-test ${CMAKE_SOURCE_DIR}/../experiments/graph-overrides.conf)

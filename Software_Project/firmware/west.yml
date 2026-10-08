@@ -1,0 +1,10 @@
+manifest:
+  version: "0.13"
+  projects:
+    - name: zephyr
+      url: https://github.com/zephyrproject-rtos/zephyr
+      revision: bbbf8b30094dacd0d6830946ba206bcec8af6b0c
+      import:
+        name-allowlist: []
+  self:
+    path: shino-app
